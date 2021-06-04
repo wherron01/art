@@ -2,7 +2,7 @@
   * An art piece by Willow Herron
   */
 
-final int DMAX = 10;
+final int DMAX = 9;
 
 void setup() {
   size(800,800);
@@ -10,7 +10,7 @@ void setup() {
   colorMode(RGB, DMAX);
   strokeWeight(DMAX);
   line(width/2, height/4, width/2, height);
-  drawBranches(width/2, height/4, width/2, height, DMAX);
+  drawBranches(width/2, height, width/2, height/4, DMAX);
   save("example.png");
   exit();
 }
@@ -20,7 +20,7 @@ void drawBranches(float tx1, float ty1, float tx2, float ty2, int depth) {
   float ylen = ty2-ty1;
   float trunklen = sqrt(xlen*xlen+ylen*ylen);
   for(int j = 0; j < depth; j++) {
-    float pos = 3*(noise(j+depth*100000)/4);
+    float pos = 0.25+3*(noise(j+depth*100000)/4);
     float x1 = (pos*xlen)+tx1;
     float y1 = (pos*ylen)+ty1;
     float len = random(trunklen/4, 3*trunklen/4);

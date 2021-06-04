@@ -2,7 +2,7 @@
   * An art piece by Willow Herron
   */
 
-final int DMAX = 10;
+final int DMAX = 9;
 
 void setup() {
   size(800,800);

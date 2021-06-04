@@ -1,3 +1,7 @@
+/** Grow factorial branches off a tree.  Change DMAX, the strokeWeights, and the strokes.
+  * An art piece by Willow Herron
+  */
+
 final int DMAX = 10;
 
 void setup() {

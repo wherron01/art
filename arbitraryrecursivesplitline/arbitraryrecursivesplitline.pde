@@ -10,7 +10,7 @@ void setup() {
   strokeWeight(1);
   recursiveSplit(0, 0, 0, 0, height, width, 0, width, height, false);
   save("example.png");
-  exit();
+  //exit(); //Preview?
 }
 void recursiveSplit(int depth, double x00, double y00, double x01, double y01, double x10, double y10, double x11, double y11, boolean axis) {
   if((((x00-x01)*(x00-x01))+((y00-y01)*(y00-y01)) < 1 && ((x10-x11)*(x10-x11))+((y10-y11)*(y10-y11)) < 1) || (((x00-x10)*(x00-x10))+((y00-y10)*(y00-y10)) < 1 && ((x01-x11)*(x01-x11))+((y01-y11)*(y01-y11)) < 1) || depth < 0 || depth > DEPTH_MAX) { 

@@ -1,0 +1,24 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{datetime2}
+\usepackage{amsmath}
+
+\title{Derivation of Spiral Endpoint}
+\author{Willow Herron}
+
+
+\begin{document}
+	\maketitle
+	\tiny \begin{align*}
+		r_0(\theta) &= a(\theta-d)^3-b(\theta-d)\\
+		r_1(\theta) &= a(\theta-e)^3-c(\theta-e)\\
+		r_0 &= r_1\\
+		(\theta-d)(a(\theta-d)^2-b) &= (\theta-e)(a(\theta-e)^2-c)\\
+		(\theta-d)(a\theta^2-2ad\theta+(ad^2-b)) &= (\theta-e)(a\theta^2-2ae\theta+(ae^2-c))\\
+		-3ad\theta^2+(3ad^2-b)\theta-d(ad^2-b)&=-3ae\theta^2+(3ae^2-c)\theta-e(ae^2-c)\\
+		0 &= 3a(e-d)\theta^2+(3a(d^2-e^2)-b+c)\theta-ad^3+bd+ae^3-ce\\
+		x &= \frac{3a(e^2-d^2)+b-c\pm\sqrt{(3a(d^2-e^2)-b+c)^2-12a(e-d)(ae^3-ce-ad^3+bd)}}{6a(e-d)}
+	\end{align*}
+\end{document}

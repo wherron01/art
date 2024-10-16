@@ -9,7 +9,7 @@ void setup() {
   colorMode(HSB, 1); //HSB is nice for hue rotation with x and y, while RGB is better for specific two-color gradients, which usually look decent.
   recursiveSplit(0, 0, 0, width, height, false);
   save("example.png");
-  exit();
+  //exit(); //Preview?
 }
 void recursiveSplit(int depth, double x, double y, double w, double h, boolean axis) {
   if(w < 1 || h < 1 || depth < 0 || depth > DEPTH_MAX) return;
@@ -26,7 +26,7 @@ void recursiveSplit(int depth, double x, double y, double w, double h, boolean a
 /**
   * Returns a value between zero and one which decides where to split the box.  
   * For interesting and unique patterns, should incorporate randomness.
-  * Can be modified to weight towards specific orientations, fill areas of the screen more densely, or generate different patterns.can be modified to weight towards specific orientations, fill areas of the screen more densely, or generate different patterns.
+  * Can be modified to weight towards specific orientations, fill areas of the screen more densely, or generate different patterns.
   */
 double splitlinePosition(int depth, double x, double y, double w, double h) {
   return random(1);

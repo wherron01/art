@@ -3,25 +3,27 @@
   */
 
 //Runtime is proportional to the product of these resolutions.  
-final int R_RESOLUTION = 200;
-final int THETA_RESOLUTION = 5000;
+final int R_RESOLUTION = 1000;
+final int THETA_RESOLUTION = 10000;
 
 void setup() {
   size(1000,1000); //Scales canvas.  Runtime is agnostic of this.
   colorMode(HSB,1);
   background(0);
   strokeWeight(1);
-  cast(0.005, 0.1, 2*PI/3);
+  cast(0.005, 0.1, 3);
   save("example.png");
   //exit(); //Preview?
 }
 
-void cast(double ra, double rvi, double ts) {
+void cast(double ra, double rvi, int n) {
+  double ts = 2.0*PI/n;
   for(double ti = 0; ti < 2*PI; ti+=ts) {
     for(double rv = rvi; rv > 0; rv -= rvi/R_RESOLUTION) {
       double mt = endpoint(ra, rv, rvi, ti, ti+ts);
-      for(double t = ti; t < mt; t += 2*PI/THETA_RESOLUTION) {
-        double tn = t + 2*PI/THETA_RESOLUTION;
+      double tr = 2.0*PI/THETA_RESOLUTION;
+      for(double t = ti; t < mt-tr; t += tr) {
+        double tn = t + tr;
         stroke(colorize(rv/rvi, (t-ti)/(mt-ti)));
         polarLine(ray(t, ti, ra, rv), t, ray(tn, ti, ra, rv), tn);
       }
@@ -54,5 +56,5 @@ void polarLine(double r1, double t1, double r2, double t2) {
   * Velocity and t scaled to 0-1 based on range
   */
 color colorize(double v, double t) {
-  return color((float)v, 1, 1);
+  return color((float)v, 1, (float)(1-t));
 }

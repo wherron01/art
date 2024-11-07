@@ -7,11 +7,11 @@ final int R_RESOLUTION = 1000;
 final int THETA_RESOLUTION = 10000;
 
 void setup() {
-  size(1000,1000); //Scales canvas.  Runtime is agnostic of this.
+  size(1440,1440); //Scales canvas.  Runtime is agnostic of this.
   colorMode(HSB,1);
   background(0);
   strokeWeight(1);
-  cast(0.005, 0.1, 3);
+  cast(0.15, 0.5, 7);
   save("example.png");
   //exit(); //Preview?
 }
@@ -25,13 +25,14 @@ void cast(double ra, double rvi, int n) {
       for(double t = ti; t < mt-tr; t += tr) {
         double tn = t + tr;
         stroke(colorize(rv/rvi, (t-ti)/(mt-ti)));
+        if(ray(tn, ti, ra, rv) < 0) break;
         polarLine(ray(t, ti, ra, rv), t, ray(tn, ti, ra, rv), tn);
       }
     }
   }
 }
 
-/** The equation for casting a ray backwards with a given velocity, fixed t velocity, and negative jerk
+/** The equation for casting a ray backwards with a given velocity, fixed t velocity, and negative acceleration
   * Consolidates all constants into a single number, to simplify.  
   */
 double ray(double t, double ti, double ra, double rv) {
@@ -56,5 +57,5 @@ void polarLine(double r1, double t1, double r2, double t2) {
   * Velocity and t scaled to 0-1 based on range
   */
 color colorize(double v, double t) {
-  return color((float)v, 1, (float)(1-t));
+  return color((float)(v*v*v), 1, (float)(1-t));
 }
